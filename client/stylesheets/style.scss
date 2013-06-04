@@ -1,3 +1,18 @@
+
+$patdex-green: #00D38C;
+
+$patdex-red: #E36055;
+$patdex-blue: #62C7FF;
+
+$patdex-lightest-grey: #EAEAEA;
+$patdex-light-grey: #CBCBCB;
+$patdex-grey: #9C9C9C;
+$patdex-dark-grey: #515151;
+
+$patdex-white: #fff;
+
+$patdex-shadow: rgba(0,0,0,0.15);
+
 * { 
 	-moz-box-sizing: border-box; 
 	-webkit-box-sizing: border-box; 
@@ -79,7 +94,7 @@ input {
 	font-family: UbuntuTitling-Bold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 18px;
 	border: none;
-	color: #00D38C;
+	color: $patdex-green;
 	height: 2.5em;
 	border-radius: 2.5em;
 	margin-top: 0em;
@@ -93,11 +108,11 @@ input:focus, textarea:focus {
 }
 
 ::-webkit-input-placeholder {
-	color: #EBEBEB;
+	color: $patdex-lightest-grey;
 }
 
 .error::-webkit-input-placeholder {
-	color: #E36055;
+	color: $patdex-white;
 }
 
 #submit-button {
@@ -118,7 +133,7 @@ input:focus, textarea:focus {
 }
 
 .container.felt.image {
-	background: #00D38C url('/logo-dark.svg') no-repeat center;
+	background: $patdex-green url('/logo-dark.svg') no-repeat center;
 }
 
 .container.center {
@@ -127,17 +142,17 @@ input:focus, textarea:focus {
 }
 
 .container.felt {
-	background-color: #00D38C;
-	color: #fff;
+	background-color: $patdex-green;
+	color: $patdex-white;
 }
 
 .container.carbon {
-	background-color: #515151;
-	color: #fff;
+	background-color: $patdex-dark-grey;
+	color: $patdex-white;
 }
 
 .container.carbon h1 {
-	color: #00D38C;
+	color: $patdex-green;
 }
 
 .app-icon {
@@ -146,11 +161,11 @@ input:focus, textarea:focus {
 }
 
 .error {
-	background-color: #FC6B5F;
+	background-color: $patdex-red;
 }
 
 .thinking {
-	background-color: #62C7FF;
+	background-color: $patdex-blue;
 }
 
 .big-button {
@@ -161,10 +176,8 @@ input:focus, textarea:focus {
 	width: 4em;
 	height: 4em;
 	border-radius: 4em;
-	border: 0.3em solid #fff;
-  -moz-box-shadow:    0px 8px 0px 0px rgba(0,0,0,0.15);
-  -webkit-box-shadow: 0px 8px 0px 0px rgba(0,0,0,0.15);
-  box-shadow:         0px 8px 0px 0px rgba(0,0,0,0.15);
+	border: 0.3em solid $patdex-white;
+  box-shadow: 0px 8px 0px 0px $patdex-shadow;
 }
 
 .big-button .ss-icon {
@@ -172,15 +185,15 @@ input:focus, textarea:focus {
 	vertical-align: middle;
 	text-align: center;
 	font-size: 2em;
-	color: #fff;
+	color: $patdex-white;
 }
 
 .container.felt h2 {
-	color: #00A06A;
+	color: $patdex-shadow;
 }
 
 .container.felt h2.s-active {
-	color: #fff;
+	color: $patdex-white;
 }
 
 .decks {
@@ -190,23 +203,22 @@ input:focus, textarea:focus {
 }
 
 .deck, .patent {
-	background-color: #fff;
+	background-color: $patdex-white;
 	border-radius: 1em;
 	padding: 1em;
 	text-align: left;
 	margin-top: 1em;
 	margin-bottom: 1em;
-	-webkit-box-shadow: 0px 5px 0px 0px rgba(0,0,0,0.15);
-	box-shadow: 0px 5px 0px 0px rgba(0,0,0,0.15);
+	box-shadow: 0px 5px 0px 0px $patdex-shadow;
 }
 
 .deck {
-	-webkit-box-shadow: inset 0px 5px 0px 0px #D6D6D6, inset 0px 10px 0px 0px #EAEAEA, 0px 5px 0px 0px rgba(0,0,0,0.15);
+	// the box shadow property doesn't seem to work sass variables in this case
 	box-shadow: inset 0px 5px 0px 0px #D6D6D6, inset 0px 10px 0px 0px #EAEAEA, 0px 5px 0px 0px rgba(0,0,0,0.15);
 }
 
 .container .deck h2 {
-	color: #00D38C;
+	color: $patdex-green;
 	margin-top: 0.5em;
 	margin-bottom: 0;
 }
@@ -214,13 +226,13 @@ input:focus, textarea:focus {
 
 
 .deck p, .patent p {
-	color: #9C9C9C;
+	color: $patdex-grey;
 	font-size: 0.875em;
 	margin-bottom: 0;
 }
 
 .deck .time {
-	color: #EBEBEB;
+	color: $patdex-light-grey;
 }
 
 .deck .right, .patent .right {
@@ -273,27 +285,26 @@ input:focus, textarea:focus {
 	margin-left: auto;
 	margin-right: auto;
 	width: 300px;
-	background-color: #00A06A;
+	background-color: $patdex-shadow;
 	border-radius: 1em;
 	padding: 1em;
 	text-align: left;
 	margin-top: 1em;
 	margin-bottom: 1em;
-	-webkit-box-shadow: inset 0px 5px 0px 0px #00905F;
-	box-shadow: inset 0px 5px 0px 0px #00905F;
+	box-shadow: inset 0px 5px 0px 0px $patdex-shadow;
 }
 
 #deck-input-form textarea {
 	width: 200px;
 	font-family: UbuntuTitling-Bold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	border: none;
-	color: #fff;
-	background-color: #00A06A;
+	color: $patdex-white;
+	background: none;
 	height: 1em;
 }
 
 #deck-input-form textarea::-webkit-input-placeholder {
-	color: #00D38C;
+	color: $patdex-green;
 }
 
 .big-field {
@@ -321,13 +332,13 @@ input:focus, textarea:focus {
 #submit-deck {
 	cursor: pointer;
 	padding-top: 0.2em;
-	color: #fff;
+	color: $patdex-white;
 }
 
 #cancel-deck {
 	cursor: pointer;
 	margin-top: -1em;
-	color: #00D38C;
+	color: $patdex-green;
 }
 
 .button-holder, .pdf-viewer-cancel {
@@ -349,7 +360,7 @@ input:focus, textarea:focus {
 
 #search-button, #add-button, #cancel-button {
 	cursor: pointer;
-	background-color: #00D38C;
+	background-color: $patdex-green;
 }
 
 .deck-label-name, .deck-label-description {
@@ -357,13 +368,13 @@ input:focus, textarea:focus {
 }
 
 #deck-count {
-	color: #00D38C;
+	color: $patdex-green;
 	font-size: 1.5em;
 }
 
 #delete-deck, #remove-patent {
 	margin-top: -1em;
-	color: #EAEAEA;
+	color: $patdex-lightest-grey;
 }
 
 
@@ -373,14 +384,14 @@ input:focus, textarea:focus {
 
 .container .patent h1 {
 	font-size: 1.2em;
-	color: #515151;
+	color: $patdex-dark-grey;
 	margin-top: 0em;
 	margin-bottom: 0;
 	width: 200px;
 }
 
 .patent h1 .number {
-	color: #CBCBCB;
+	color: $patdex-light-grey;
 	font-size: 0.7em;
 }
 
@@ -403,7 +414,7 @@ input:focus, textarea:focus {
 	padding-right: 1.5em;
 	margin-left: -1.5em;
 	margin-right: -1.5em;
-	border-bottom: 1px solid #EAEAEA;
+	border-bottom: 1px solid $patdex-lightest-grey;
 }
 
 .patent-biblio, .patent-body {
@@ -411,14 +422,14 @@ input:focus, textarea:focus {
 }
 
 .patent-biblio .biblio-maxi table {
-	color: #9C9C9C;
+	color: $patdex-grey;
 	border: none;
 	width: 100%;
 	font-size: 1em;
 }
 
 .biblio-maxi p.grey {
-	color: #CBCBCB;
+	color: $patdex-light-grey;
 }
 
 table td {
@@ -426,18 +437,18 @@ table td {
 }
 
 .grey {
-	color: #CBCBCB;
+	color: $patdex-light-grey;
 }
 
 .patent-footer p {
 	padding-top: 1em;
-	color: #EAEAEA;
+	color: $patdex-light-grey;
 }
 
 
 #pdf-link .ss-icon, .patent .expand-biblio {
 	padding-top: 0.5em;
-	color: #00D38C;
+	color: $patdex-green;
 }
 
 .no-patents {
@@ -464,19 +475,18 @@ table td {
 #search-form {
 	height: 100%;
 	width: 300px;
-	background-color: #fff;
+	background-color: $patdex-white;
 	margin-left: auto;
 	margin-right: auto;
 	border-radius: 4em;
 	text-align: center;
 	padding: 0px;
-	-webkit-box-shadow: 0px 5px 0px 0px rgba(0,0,0,0.15);
 	box-shadow: 0px 5px 0px 0px rgba(0,0,0,0.15);
 }
 
 #search-submit, #add-submit {
 	cursor: pointer;
-	color: #00D38C;
+	color: $patdex-green;
 	display: inline-block;
 	float: right;
 	margin-right: 0.5em;
@@ -485,7 +495,7 @@ table td {
 
 #cancel-search, #cancel-add {
 	cursor: pointer;
-	color: #EAEAEA;
+	color: $patdex-lightest-grey;
 	display: inline-block;
 	float: left;
 	margin-left: 0.5em;
@@ -502,7 +512,7 @@ table td {
 
 #status-message {
 	text-align: center;
-	color: #fff;
+	color: $patdex-white;
 }
 
 #content-slider {

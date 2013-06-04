@@ -1,0 +1,39 @@
+
+<template name="patentItem">
+
+	<div class="patent">
+
+		<div class="patent-header">
+			{{#if PDF}}
+				<a id="pdf-link"><p class="ss-icon right">pdf</p></a>
+			{{/if}}
+	  	<h1>{{title}} <span class="number">{{number}}</span></h1>
+	  </div>
+
+	  <div class="patent-biblio">
+
+	  	{{#if showFullBiblio}}
+	  		{{> fullBiblio}}
+	  	{{else}}
+	  		<p class="expand-biblio ss-icon right">list</p>
+	  		{{> miniBiblio}}
+	  	{{/if}}
+
+	  </div>
+
+	  <div class="patent-body">
+	  	<p>{{abstract}}</p>
+	  </div>
+
+	  <div class="patent-footer">
+	  	<p>Source: {{source}}</p>
+	  	{{#if resultCheck}}
+	  		
+	  	{{else}}
+	  		<div id="remove-patent" class="ss-icon right">trash</div>
+	  	{{/if}}
+	  </div>
+
+  </div>
+  
+</template>

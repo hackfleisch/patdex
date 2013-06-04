@@ -1,0 +1,46 @@
+
+<template name="decksPage">
+
+	<div class="container felt image">
+
+		<div class="header">
+			{{> decksHeader}}
+		</div>
+
+		{{#if inputActive}}
+			{{> deckInput}}
+		{{/if}}
+
+		<div class="content decks">
+			{{#if deckCheck}}
+		    {{#each decks}}
+		      {{> deckItem}}
+		    {{/each}}
+		  {{else}}
+		  	{{#if inputActive}}
+		  		
+		  	{{else}}
+		  		<h2 class="s-active">Hi {{currentUser.username}}!</h2>
+		  		<p id="status-message">Tap the plus to create <br>your first deck, or...</p>
+		  	{{/if}}
+		  {{/if}}
+	  </div>
+
+	</div>
+
+	{{#if deckCheck}}
+		<div class="button-holder">
+			<div id="search-button" class="big-button">
+				<div class="ss-icon">Search</div>
+			</div>
+		</div>
+	{{else}}
+		<div class="button-holder">
+			<p id="status-message">Try searching <br>for some patents!</p>
+			<div id="search-button" class="big-button">
+				<div class="ss-icon">Search</div>
+			</div>
+		</div>
+	{{/if}}
+
+</template>

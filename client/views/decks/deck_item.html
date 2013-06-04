@@ -1,0 +1,16 @@
+
+<template name="deckItem">
+	<div class="deck">
+		<p id="deck-count" class="right">{{count}}</p>
+		{{#if currentPatent}}
+  		<a href="/decks/{{_id}}"> <h2 class="deck-label-name">{{name}}</h2> </a>
+  	{{else}}
+  		<h2 class="deck-label-name deck-name">{{name}}</h2>
+  	{{/if}}
+  	<p class="deck-label-description">{{description}}</p>
+  	<p class="time">{{lastUpdated}}</p>
+  	{{#if currentPatent}}
+  		<p id="delete-deck" class="ss-icon right">trash</p>
+  	{{/if}}
+  </div>
+</template>

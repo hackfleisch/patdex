@@ -1,0 +1,42 @@
+
+<template name="searchPage">
+
+	{{#if pdfVisible}}
+		{{> pdfViewer}}
+	{{/if}}
+
+	<div class="container felt image">
+		
+		<div class="header search">
+			{{> searchHeader}}
+		</div>
+
+		<div class="content patents">
+			{{#if resultCheck}}
+		    {{#with patent}}
+		      {{> patentItem}}
+		    {{/with}}
+		  {{else}}
+		  	<div class="no-patents">
+		  		<p id="status-message">We need a patent number. <br>Something like this: US4666042</p>
+		  	</div>
+		  {{/if}}
+	  </div>
+
+	</div>
+
+	{{#if resultCheck}}
+		<div class="button-holder">
+			<div id="add-button" class="big-button">
+				<div class="ss-icon">Plus</div>
+			</div>
+		</div>
+	{{else}}
+		<div class="button-holder">
+			<div id="search-button" class="big-button">
+				<div class="ss-icon">Search</div>
+			</div>
+		</div>
+	{{/if}}
+
+</template>

@@ -1,0 +1,40 @@
+
+<template name="patentsPage" id="patentsPage">
+
+	{{#if pdfVisible}}
+		{{> pdfViewer}}
+	{{/if}}
+
+	<div class="container felt image">
+		
+		<div class="header">
+			{{> patentsHeader}}
+		</div>
+
+		<div class="content patents">
+			{{#if patentCheck}}
+				<div id="content-slider" class="royalSlider rsDefault">
+			    {{#each patents}}
+			      {{> patentItem}}
+			    {{/each}}
+		  	</div>
+		  {{else}}
+		  	
+		  {{/if}}
+	  </div>
+
+	</div>
+
+	{{#if patentCheck}}
+
+	{{else}}
+
+		<div class="button-holder">
+			<p id="status-message">Try searching for some patents<br>to add to this deck.</p>
+			<div id="search-button" class="big-button">
+				<div class="ss-icon">Search</div>
+			</div>
+		</div>
+	{{/if}}
+
+</template>

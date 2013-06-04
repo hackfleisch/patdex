@@ -1,0 +1,23 @@
+
+<template name="addPage">
+
+	<div class="container felt image">
+		
+		<div class="header search">
+			{{> addHeader}}
+		</div>
+
+		<div class="content decks">
+			{{> deckInput}}
+			{{#if deckCheck}}
+		    {{#each decks}}
+		      {{> deckItem}}
+		    {{/each}}
+		  {{else}}
+		  	<p>You'll have to create a deck first!<br> All we need is a title.</p>
+		  {{/if}}
+	  </div>
+
+	</div>
+
+</template>

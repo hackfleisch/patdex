@@ -509,6 +509,16 @@ table td {
 	width: 100%
 }
 
+#content-slider.search-results {
+	margin-top: 1.5em;
+}
+
+#content-slider .rsNav {
+    position: absolute;
+    bottom: auto;
+    top: -20px;
+}
+
 .royalSlider {
 	height: 472px;
 }

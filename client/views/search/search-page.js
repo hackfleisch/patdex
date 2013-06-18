@@ -1,3 +1,15 @@
+
+Template.searchPage.rendered = function(e) {
+
+    $('#content-slider').royalSlider({
+      // example of slider options
+      arrowsNav: false,
+      controlNavigation: 'bullets',
+      navigateByClick: false
+    });
+
+};
+
 Template.searchPage.events({
 
   'click #add-button, tap #add-button' : function(e) {
@@ -15,9 +27,9 @@ Template.searchPage.helpers({
 		return Session.get('resultStatus');
 	},
 
-	patent: function(e) {
-		var currentPatent = Session.get('currentPatent');
-		return Patents.findOne(currentPatent);
+	results: function(e) {
+		var currentPatents = Session.get('currentPatents');
+		return Session.get('currentPatents');
 	},
 
 	pdfVisible: function(e) {

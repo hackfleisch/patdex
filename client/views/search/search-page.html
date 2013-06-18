@@ -13,13 +13,15 @@
 
 		<div class="content patents">
 			{{#if resultCheck}}
-		    {{#with patent}}
-		      {{> patentItem}}
-		    {{/with}}
+				<div id="content-slider" class="royalSlider rsDefault search-results">
+			    {{#each results}}
+			      {{> patentItem}}
+			    {{/each}}
+			  </div>
 		  {{else}}
-		  	<div class="no-patents">
+<!-- 		  	<div class="no-patents">
 		  		<p id="status-message">We need a patent number. <br>Something like this: US4666042</p>
-		  	</div>
+		  	</div> -->
 		  {{/if}}
 	  </div>
 

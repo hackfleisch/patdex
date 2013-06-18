@@ -2,12 +2,6 @@
 
 Template.searchHeader.events({
 
-  'keyup #search-field' : function(e) {
-      var searchValue = $('#search-field').val();
-      searchValue = $('#search-field').val().replace(/[^a-z^A-Z\d]/, "");
-      $('#search-field').val(searchValue);
-  },
-
   'click #cancel-search, tap #cancel-search' : function(e) {
     if(ignoreClick(e)) return;
     Session.set('resultStatus', false);
@@ -36,31 +30,131 @@ submitSearch = function(e) {
   Session.set('resultStatus', false);
   Session.set('currentPatent', "");
 
-  var searchInput = $('#search-field').val().toUpperCase();
-  $('#search-field').val(searchInput);
+  var searchInput = $('#search-field').val();
 
   if(searchInput !== "") {
 
-    var existingPatent = Patents.findOne({number: searchInput});
-
-    if(existingPatent) {
-      Session.set('resultStatus', true);
-      Session.set('currentPatent', existingPatent._id);
-    } else {
-      grabPatent(searchInput);
-    }
+    searchGoogle(searchInput);
 
   }
 
 };
 
-toTitleCase = function(str) {
 
-  return str.replace(/\w\S*/g, function(txt) { 
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+searchGoogle = function(query) {
+
+  var existingPatents = [];
+  var newPatents = [];
+  var patentResults = [];
+
+  // make HTTP call to google URL with query
+
+  Meteor.call("search_google", query, function(err,resultsPage) {
+
+    console.log(resultsPage);
+
+    // // initialise arrays and variables
+
+    // existingPatents = [];
+    // newPatents = [];
+    // var resultsList = [];
+    // var currentPatent = "";
+
+    // if(err) {
+
+    //   // if there is an error then cancel
+
+    //   console.log("HTTP error!");
+
+    //   return;
+
+    // } else {
+
+    //   // for each result push their URL to the resultsList array
+
+    //   $(resultsPage).find("cite").each(function(e){
+    //     resultsList.push($(this).text());
+    //   });
+
+    //   // for each URL check if we already have them in the system
+
+    //   for(i=0;i<resultsList.length;i++) {
+
+    //     // convert the URL to a string and clean off ending if necessary
+
+    //     var string = resultsList[i].toString();
+    //     if(string.indexOf('?') !== -1) {
+    //       var cleanString = string.substring(0, string.indexOf('?'));
+    //     } else {
+    //       cleanString = string;
+    //     }
+
+    //     // look for the patent in the patents collection
+
+    //     currentPatent = Patents.findOne({link: cleanString});
+
+    //     if(currentPatent) {
+
+    //       // if found add the patent object into the existingPatents array
+
+    //       existingPatents.push(currentPatent);
+
+    //     } else {
+
+    //       // if not then add the patent number to the newPatents array
+
+    //       var patentNumber = cleanString.slice(23);
+
+    //       newPatents.push(patentNumber);
+
+    //     }
+    //   }
+
+    // }
+
+    // // check for patents in the existingPatents array
+
+    // if(existingPatents.length !== 0) {
+
+    //   // add each patent object to the patentResults array
+
+    //   for(i=0;i<existingPatents.length;i++) {
+    //     patentResults.push(existingPatents[i]);
+    //   }
+
+    // }
+
+    // // check for patents in the newPatents array
+
+    // if(newPatents.length !== 0) {
+
+    //   // harvest each new patent
+
+    //   for(i=0;i<newPatents.length;i++) {
+    //     grabPatent(newPatents[i]);
+    //   }
+
+    //   // add each patent object to the patentResults array
+
+    //   for(i=0;i<newPatents.length;i++) {
+    //     var newPatent = Patents.findOne({number: newPatents[i]});
+    //     patentResults.push(newPatent);
+    //   }
+
+    // }
+
+    // // Display the results!
+
+    // Session.set('currentPatents', patentResults);
+    // Session.set('resultStatus', true);
+
   });
-
+    
 };
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
 
 grabPatent = function(number) {
 
@@ -189,42 +283,11 @@ processPatent = function(patent, number) {
 
   addPatent(newPatent, patentNumber);
 
-  // Meteor.call("check_pdf", "https://patentimages.storage.googleapis.com/pdfs/", number, function(err,result) {
-
-  //   if(err) {
-  //     patentPDF = false;
-  //   } else {
-  //     patentPDF = "patentimages.storage.googleapis.com/pdfs/" + number + ".pdf";
-  //   }
-
-  //   var newPatent = {
-  //     number: patentNumber,
-  //     title: patentTitle,
-  //     publication: patentPublication,
-  //     priority: patentPriority,
-  //     inventors: patentInventors,
-  //     applicants: patentApplicants,
-  //     classifications: patentClassifications,
-  //     link: patentLink,
-  //     PDF: patentPDF,
-  //     abstract: patentAbstract,
-  //     source: patentSource
-  //   };
-
-  //   addPatent(newPatent, patentNumber);
-
-  // });
-
 };
 
 addPatent = function(newPatent, patentNumber) {
 
   Patents.insert(newPatent);
-
-  var existingPatent = Patents.findOne({number: patentNumber});
-
-  Session.set('resultStatus', true);
-  Session.set('currentPatent', existingPatent._id);
 
 };
 

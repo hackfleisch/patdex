@@ -22,6 +22,18 @@ Meteor.methods({
 
     return result;
 
+  },
+
+  search_google: function(query) {
+
+    var url = "https://www.google.com/search?safe=off&output=search&tbm=pts&q=" + query; 
+
+    var result = Meteor.http.get(url).content;
+
+    $ = cheerio.load(result);
+
+    return $('#search').html();
+
   }
 
 });

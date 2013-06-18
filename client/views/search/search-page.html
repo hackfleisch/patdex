@@ -19,13 +19,20 @@
 			    {{/each}}
 			  </div>
 		  {{else}}
-<!-- 		  	<div class="no-patents">
-		  		<p id="status-message">We need a patent number. <br>Something like this: US4666042</p>
-		  	</div> -->
+
+		  	{{#if loadingCheck}}
+
+				{{else}}
+			  	<div class="no-patents">
+			  		<p id="status-message">Search for anything!<br>"Transformable lunchbox robot"</p>
+			  	</div>
+				{{/if}}
+
 		  {{/if}}
 	  </div>
 
 	</div>
+
 
 	{{#if resultCheck}}
 		<div class="button-holder">
@@ -34,11 +41,19 @@
 			</div>
 		</div>
 	{{else}}
+		{{#if loadingCheck}}
+		<div class="button-holder">
+			<div id="search-button" class="big-button">
+				<img src="/felt-spinner.gif"/>
+			</div>
+		</div>		
+		{{else}}
 		<div class="button-holder">
 			<div id="search-button" class="big-button">
 				<div class="ss-icon">Search</div>
 			</div>
 		</div>
+		{{/if}}
 	{{/if}}
 
 </template>

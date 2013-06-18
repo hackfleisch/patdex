@@ -3,7 +3,11 @@
 	<form id="search-form" class="animated fadeInDown">
 		<h2 id="cancel-search" class="ss-icon">Delete</h2>
 		<input type="text" id="search-field" placeholder="Patent Number..."/>
-		<h2 id="search-submit" class="ss-icon">Search</h2>
+		{{#if loadingStatus}}
+			<h2 id="search-submit" class="ss-icon s-invisible">Search</h2>
+		{{else}}
+			<h2 id="search-submit" class="ss-icon">Search</h2>
+		{{/if}}
 		<input type="submit" id="submit-button"/>	
   </form>
 

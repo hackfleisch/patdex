@@ -2,6 +2,11 @@
 Template.decksPage.rendered = function(e) {
 
   Session.set('currentPatent', "");
+  Session.set('loadingStatus', false);
+  Session.set('viewFullBiblio', false);
+  Session.set('resultStatus', false);
+  Session.set('currentPatents', "");
+  Session.set('currentPatent', "");
 
 };
 

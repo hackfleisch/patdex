@@ -99,8 +99,9 @@
 		background-color: $patdex-red;
 	}
 
-	&.thinking {
-		background-color: $patdex-blue;
+	img {
+		margin-top: 0.75em;
+		margin-left: 0.75em;
 	}
 
 }
@@ -356,6 +357,9 @@
 	width: 100%;
 	&.search {
 		padding-top: 1.6em;
+		.rsBullets {
+			top: -20px;
+		}
 	}
 }
 
@@ -445,6 +449,10 @@
 
 .s-hidden {
 	display: none;
+}
+
+.s-invisible {
+	visibility: hidden;
 }
 
 

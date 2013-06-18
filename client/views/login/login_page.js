@@ -23,13 +23,11 @@ Template.loginPage.events({
             $('#status-message').text("Welcome back!");
             $('#login-status .ss-icon').text("Key");
             $('#login-status').removeClass("error");
-            $('#login-status').removeClass("thinking");
             $('#login-status').addClass("animated pulse");
           } else {
             $('#status-message').text("Create new account?");
             $('#login-status .ss-icon').text("User");
             $('#login-status').removeClass("error");
-            $('#login-status').removeClass("thinking");
           }
         }
 
@@ -46,6 +44,14 @@ Template.loginPage.events({
 
 });
 
+Template.loginPage.helpers({
+
+  loadingStatus: function(e){
+    return Session.get('loadingStatus');
+  }
+
+});
+
 clearLoginAnimations = function(e) {
 
   $('#username-field').removeClass("animated shake");
@@ -58,22 +64,24 @@ submitLogin = function(e) {
 
   e.preventDefault();
   clearLoginAnimations();
-  $('#login-status .ss-icon').text("Clock");
-  $('#login-status').addClass("thinking");
 
   var usernameInput = $('#username-field').val();
   var passwordInput = $('#password-field').val();
 
   if(usernameInput !== "" && passwordInput !== "") {
 
+    Session.set('loadingStatus', true);
+    $('#username-field').blur();
+    $('#password-field').blur();
+
     if(Meteor.users.findOne({username:usernameInput})) {
 
       Meteor.loginWithPassword(usernameInput, passwordInput, function(error) {
         if (error) {
+          Session.set('loadingStatus', false);
           $('#password-field').val("");
           $('#status-message').text("Are you sure you're " + usernameInput + "?");
           $('#login-status .ss-icon').text("Warning");
-          $('#login-status').removeClass("thinking");
           $('#login-status').addClass("error");
           $('#password-field').addClass("animated shake");
           $('#login-status').addClass("animated pulse");
@@ -98,7 +106,6 @@ submitLogin = function(e) {
 
     $('#status-message').text("You have to fill both fields");
     $('#login-status .ss-icon').text("Warning");
-    $('#login-status').removeClass("thinking");
     $('#login-status').addClass("error");
   }
 

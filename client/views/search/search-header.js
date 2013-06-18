@@ -6,6 +6,7 @@ resetSearchSession = function(e) {
   Session.set('resultStatus', false);
   Session.set('currentPatents', "");
   Session.set('currentPatent', "");
+  Session.set('loadingStatus', false);
 
 };
 
@@ -28,6 +29,14 @@ Template.searchHeader.events({
 
   'submit #search-form' : function(e) {
     submitSearch(e);
+  }
+
+});
+
+Template.searchHeader.helpers({
+
+  loadingStatus: function(e){
+    return Session.get('loadingStatus');
   }
 
 });
@@ -220,7 +229,10 @@ processSearchResults = function(searchResults) {
   // if resultsList is empty it means no results were found
 
     if(resultsList.length === 0) {
-      return console.log("No results found");
+      Session.set('resultStatus', false);
+      Session.set('loadingStatus', false);
+      $("#status-message").html("Sorry, we couldn't find any <br> patents matching that query.");
+      return;
     }
 
   // process each patent and update the view when complete
@@ -233,6 +245,7 @@ processSearchResults = function(searchResults) {
         if (tag == resultsList.length - 1) {
           Session.set('currentPatents', currentPatents);
           Session.set('resultStatus', true);
+          Session.set('loadingStatus', false);
         }
       });
     }
@@ -266,6 +279,8 @@ submitSearch = function(e) {
 
   var searchInput = $('#search-field').val();
   if(searchInput !== "") {
+    $("#search-field").blur();
+    Session.set('loadingStatus', true);
     searchGoogle(searchInput);
   }
 

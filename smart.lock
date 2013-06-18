@@ -8,7 +8,8 @@
     "basePackages": {
       "router": {},
       "moment": {},
-      "cheeriowrap": {}
+      "cheeriowrap": {},
+      "scss": {}
     },
     "packages": {
       "router": {
@@ -25,6 +26,11 @@
         "git": "https://github.com/Chillmatica/meteor-cheeriowrap.git",
         "tag": "v0.1.0",
         "commit": "9227b876729606d7d0e5d37ffe21918c27b16868"
+      },
+      "scss": {
+        "git": "https://github.com/fourseven/meteor-scss.git",
+        "tag": "v0.2.3",
+        "commit": "d500ec82a77680be3c1e0640e48842d9e66c0102"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",

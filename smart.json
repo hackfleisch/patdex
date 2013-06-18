@@ -6,6 +6,7 @@
   "packages": {
     "router": {},
     "moment": {},
-    "cheeriowrap": {}
+    "cheeriowrap": {},
+    "scss": {}
   }
 }

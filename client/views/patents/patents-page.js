@@ -2,7 +2,6 @@
 Template.patentsPage.rendered = function(e) {
 
     $('#content-slider').royalSlider({
-      // example of slider options
       arrowsNav: false,
       controlNavigation: 'bullets',
       navigateByClick: false,

@@ -2,7 +2,6 @@
 Template.searchPage.rendered = function(e) {
 
     $('#content-slider').royalSlider({
-      // example of slider options
       arrowsNav: false,
       controlNavigation: 'bullets',
       navigateByClick: false
@@ -28,7 +27,6 @@ Template.searchPage.helpers({
 	},
 
 	results: function(e) {
-		var currentPatents = Session.get('currentPatents');
 		return Session.get('currentPatents');
 	},
 

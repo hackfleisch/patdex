@@ -2,7 +2,10 @@
 
 Meteor.Router.add({
 
-  '/': 'loginPage',
+  '/': { 
+    as: 'home',
+    to: 'loginPage'
+  },
   
   '/:username/': { 
     as: 'decks',
@@ -64,12 +67,26 @@ Meteor.Router.filters({
       }
     } else { 
       // marketing page
-      return 'genericLanding';
-      // return 'loginPage';
+      //return 'genericLanding';
+      return 'loginPage';
+    }
+  },
+
+  'forwardUser': function(page) {
+
+    if (Meteor.loggingIn()) {
+      return 'loadingPage';
+    } else if (Meteor.user()) {
+      Meteor.Router.to("decks", Meteor.user());
+      return 'decksPage';
+    } else {
+      return page;
     }
   }
 
 });
+
+Meteor.Router.filter('forwardUser', {only: ['loginPage']});
 
 Meteor.Router.filter('requireLogin', {except: ['loginPage']});
 

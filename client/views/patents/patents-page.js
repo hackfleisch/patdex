@@ -1,4 +1,6 @@
 
+
+
 Template.patentsPage.rendered = function(e) {
 
     $('#content-slider').royalSlider({
@@ -7,8 +9,7 @@ Template.patentsPage.rendered = function(e) {
       navigateByClick: false,
       deeplinking: {
         enabled: true,
-        change: true,
-        prefix: 'patent-'
+        change: true
       }
     });
 
@@ -25,15 +26,24 @@ Template.patentsPage.events({
 
 Template.patentsPage.helpers({
 
+  loggedIn: function() {
+    return Meteor.user();
+  },
+
 	patentCheck: function() {
-		var deck = Session.get('currentDeck');
-		if(deck.patents.length == 0) return false;
-		return true;
+    if(Session.get('currentDeck') !== undefined) {
+  		var deck = Session.get('currentDeck');
+  		if(deck.patents.length === 0) { return false; }
+  		for(i=0;i<deck.patents.length;i++) {
+        if(!Patents.findOne({number: deck.patents[i]})) return false;
+      }
+      return true;
+    }
 	},
 
   patents: function() {
-  	var deck = Session.get('currentDeck');
-  	return Patents.find({number: {"$in": deck.patents}});
+    var deck = Session.get('currentDeck');
+    return Patents.find({number: {"$in": deck.patents}});
   },
 
   pdfVisible: function(e) {

@@ -16,8 +16,10 @@ Template.addHeader.events({
 Template.addHeader.helpers({
 
   currentPatent: function(e) {
-    var patent = Patents.findOne(Session.get('currentPatent'));
-    return patent.number;
+  	if(Session.get('currentPatent') !== undefined) {
+	    var patent = Patents.findOne(Session.get('currentPatent'));
+	    return patent.number;
+	  }
   }
 
 });

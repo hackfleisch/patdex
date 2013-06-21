@@ -17,12 +17,14 @@ Template.patentsHeader.helpers({
   },
 
   currentDeckName: function() {
-  	var deckName = Session.get('currentDeck').name;
-  	var shortName = deckName.substring(0, 14);
-  	if(shortName.length == 14) {
-  		return shortName += "...";
-  	}
-  	return shortName;
+    if(Session.get('currentDeck') !== undefined) {
+    	var deckName = Session.get('currentDeck').name;
+    	var shortName = deckName.substring(0, 14);
+    	if(shortName.length == 14) {
+    		return shortName += "...";
+    	}
+    	return shortName;
+    }
   }
 
 });

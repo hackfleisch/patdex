@@ -29,7 +29,7 @@ Template.decksPage.helpers({
   },
 
   inputActive: function() {
-  	return (Session.get("showDeckInput"));  
+  	return Session.get("showDeckInput");  
   },
 
   deckCheck: function() {

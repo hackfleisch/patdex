@@ -28,13 +28,18 @@
 	{{#if patentCheck}}
 
 	{{else}}
-
-		<div class="button-holder">
-			<p id="status-message">Try searching for some patents<br>to add to this deck.</p>
-			<div id="search-button" class="big-button">
-				<div class="ss-icon">Search</div>
+		{{#if loggedIn}}
+			<div class="button-holder">
+				<p id="status-message">Try searching for some patents<br>to add to this deck.</p>
+				<div id="search-button" class="big-button">
+					<div class="ss-icon">Search</div>
+				</div>
 			</div>
-		</div>
+		{{else}}
+			<div class="button-holder">
+				<p id="status-message">There are no patents in this deck yet.</p>
+			</div>	
+		{{/if}}
 	{{/if}}
 
 </template>

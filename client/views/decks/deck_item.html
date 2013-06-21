@@ -3,7 +3,7 @@
 	<div class="deck">
 		<p id="deck-count" class="right">{{count}}</p>
 		{{#if currentPatent}}
-  		<a href="/decks/{{_id}}"> <h2 class="deck-label-name">{{name}}</h2> </a>
+  		<h2 id="deck-link" class="deck-label-name">{{name}}</h2>
   	{{else}}
   		<h2 class="deck-label-name deck-name">{{name}}</h2>
   	{{/if}}

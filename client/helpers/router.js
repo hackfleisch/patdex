@@ -6,8 +6,22 @@ Meteor.Router.add({
     as: 'home',
     to: 'loginPage'
   },
+
+  '/search/' : {
+    as: 'search',
+    to: 'searchPage'
+  },
+
+  '/search/add/:patentNumber' : {
+    as: 'add',
+    to: 'addPage',
+    and: function(patentNumber) {
+      var currentPatent = Patents.findOne({number: patentNumber});
+      Session.set('currentPatent', currentPatent);
+    }
+  },
   
-  '/:username/': { 
+  '/:username/decks/': { 
     as: 'decks',
     to: 'decksPage', 
     and: function(username) {
@@ -15,26 +29,16 @@ Meteor.Router.add({
     } 
   },
 
-  '/decks/:_id' : { 
+  '/:username/decks/:id' : { 
     as: 'patents',
     to: 'patentsPage',
-    and: function(id) {
-      var deck = Decks.findOne(id);
-      Session.set('currentDeck', deck);
+    and: function(username, id) {
+      var deck = Decks.findOne({_id: id});
+      if(deck !== undefined) { 
+        Session.set('currentDeck', deck);
+      }
     }
   },
-
-  '/patents/search/' : {
-    as: 'search',
-    to: 'searchPage'
-  },
-
-  '/patents/search/add/' : {
-    as: 'add',
-    to: 'addPage'
-  },
-
-  // '/patents/pdf/' : 'pdfViewer',
 
   '/*': '404' // not a true 404 HTTP response
 
@@ -88,6 +92,6 @@ Meteor.Router.filters({
 
 Meteor.Router.filter('forwardUser', {only: ['loginPage']});
 
-Meteor.Router.filter('requireLogin', {except: ['loginPage']});
+Meteor.Router.filter('requireLogin', {except: ['loginPage','patentsPage']});
 
 Meteor.Router.filter('detectDevice', {only: 'loginPage'});

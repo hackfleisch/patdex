@@ -4,7 +4,16 @@ Template.deckItem.events({
     'click #delete-deck, tap #delete-deck' : function(e) {
       if(ignoreClick(e)) return;
       Decks.remove({_id: this._id}); 	
+    },
+
+    'click #deck-link, tap #deck-link' : function(e) {
+      if(ignoreClick(e)) return;
+      var deck = Decks.findOne(this._id);
+      Session.set('currentDeck', deck);
+      Meteor.Router.to("patents", Meteor.user().username, this._id);
+
     }
+    
     
 });
 

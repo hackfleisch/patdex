@@ -19,7 +19,7 @@ Template.searchPage.events({
     Session.set('viewFullBiblio', false);
     var currentPatent = Session.get('currentPatents')[slider.currSlide.id];
     Session.set('currentPatent', currentPatent);
-    Meteor.Router.to("add", Meteor.user());
+    Meteor.Router.to("add", currentPatent.number);
   }, 
 
   'click #status-message, tap  #status-message' : function(e) {

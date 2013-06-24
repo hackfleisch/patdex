@@ -118,7 +118,7 @@ Meteor.Router.filters({
 });
 
 Meteor.Router.filter('detectDevice', {only: 'loginPage'});
-Meteor.Router.filter('requireLogin', {except: ['loginPage', 'decksPage', 'patentsPage', 'profilePage']});
+Meteor.Router.filter('requireLogin', {except: ['loginPage', 'decksPage', 'patentsPage', 'profilePage', 'genericLanding', 'idevicePage']});
 Meteor.Router.filter('forwardUser', {only: ['loginPage']});
 Meteor.Router.filter('verfiyUser', {only: ['profilePage', 'decksPage', 'patentsPage']});
 Meteor.Router.filter('verfiyDeck', {only: ['patentsPage']});

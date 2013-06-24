@@ -5,7 +5,7 @@ Template.patentsHeader.events({
   'click #return-decks, tap #return-decks' : function(e) {
   	if(ignoreClick(e)) return;
     Session.set('viewFullBiblio', false);
-  	Meteor.Router.to("decks", Meteor.user());
+  	Meteor.Router.to("decks", Session.get('currentUser'));
   }
 
 });

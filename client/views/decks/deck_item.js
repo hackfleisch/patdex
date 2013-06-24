@@ -10,7 +10,7 @@ Template.deckItem.events({
       if(ignoreClick(e)) return;
       var deck = Decks.findOne(this._id);
       Session.set('currentDeck', deck);
-      Meteor.Router.to("patents", Meteor.user().username, this._id);
+      Meteor.Router.to("patents", Session.get('currentUser'), this._id);
 
     }
     
@@ -31,6 +31,10 @@ Template.deckItem.helpers({
   currentPatent: function(e) {
     if(Session.get('currentPatent') === "") return true;
     return false;
+  },
+
+  loggedIn: function() {
+    return Meteor.user();
   }
 
 });

@@ -9,8 +9,10 @@
   	{{/if}}
   	<p class="deck-label-description">{{description}}</p>
   	<p class="time">{{lastUpdated}}</p>
-  	{{#if currentPatent}}
-  		<p id="delete-deck" class="ss-icon right">trash</p>
-  	{{/if}}
+    {{#if loggedIn}}
+    	{{#if currentPatent}}
+    		<p id="delete-deck" class="ss-icon right">trash</p>
+    	{{/if}}
+    {{/if}}
   </div>
 </template>

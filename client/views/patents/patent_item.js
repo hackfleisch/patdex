@@ -27,6 +27,10 @@ Template.patentItem.helpers({
 
   resultCheck: function(e) {
     return Session.get('resultStatus');
+  },
+
+  loggedIn: function() {
+    return Meteor.user();
   }
 
 });

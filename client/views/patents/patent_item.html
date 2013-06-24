@@ -27,11 +27,13 @@
 
 	  <div class="patent-footer">
 	  	<p>Source: {{source}}</p>
-	  	{{#if resultCheck}}
-	  		
-	  	{{else}}
-	  		<div id="remove-patent" class="ss-icon right">trash</div>
-	  	{{/if}}
+	  	{{#if loggedIn}}
+		  	{{#if resultCheck}}
+		  		
+		  	{{else}}
+		  		<div id="remove-patent" class="ss-icon right">trash</div>
+		  	{{/if}}
+		  {{/if}}
 	  </div>
 
   </div>

@@ -24,8 +24,7 @@ Template.decksPage.events({
 Template.decksPage.helpers({
 
   decks: function() {
-  	var currentUser = Meteor.user().username;
-    return Decks.find({username: currentUser},{sort: {lastUpdated: -1}});
+    return Decks.find({username: Session.get('currentUser')},{sort: {lastUpdated: -1}});
   },
 
   inputActive: function() {
@@ -33,9 +32,12 @@ Template.decksPage.helpers({
   },
 
   deckCheck: function() {
-    var currentUser = Meteor.user().username;
-    if(Decks.findOne({username: currentUser})) return true;
+    if(Decks.findOne({username: Session.get('currentUser')})) return true;
     return false;
-  }
+  },
+
+  loggedIn: function() {
+    return Meteor.user();
+  },
 
 });

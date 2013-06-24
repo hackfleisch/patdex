@@ -29,8 +29,16 @@ Template.decksHeader.helpers({
 
 	headerText: sessionCheckBuilder("showDeckInput", "New Deck", "My Decks"),
 	headerAction: sessionCheckBuilder("showDeckInput", "Delete", "Plus"),
-	headerClass: sessionCheckBuilder("showDeckInput", "s-active", "")
+	headerClass: sessionCheckBuilder("showDeckInput", "s-active", ""),
 
+  loggedIn: function() {
+    return Meteor.user();
+  },
+
+  deckHeader: function() {
+    return Session.get('currentUser');
+  }
+  
 });
 
 

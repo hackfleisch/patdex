@@ -38,6 +38,6 @@ Template.decksPage.helpers({
 
   loggedIn: function() {
     return Meteor.user();
-  },
+  }
 
 });

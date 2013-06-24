@@ -20,13 +20,15 @@ Meteor.Router.add({
       Session.set('currentPatent', currentPatent);
     }
   },
+
+  '/:username/': { 
+    as: 'profile',
+    to: 'profilePage'
+  }, 
   
   '/:username/decks/': { 
     as: 'decks',
-    to: 'decksPage', 
-    and: function(username) {
-      
-    } 
+    to: 'decksPage'
   },
 
   '/:username/decks/:id' : { 
@@ -92,7 +94,7 @@ Meteor.Router.filters({
     if (Meteor.user()) {
       Session.set('currentUser', Meteor.user().username);
       return page;
-    } else { 
+    } else {
       var path = window.location.pathname;
       path = path.substr(1, path.length);
       var currentUser = path.substr(0, path.indexOf('/')); 
@@ -116,9 +118,9 @@ Meteor.Router.filters({
 });
 
 Meteor.Router.filter('detectDevice', {only: 'loginPage'});
-Meteor.Router.filter('requireLogin', {except: ['loginPage', 'decksPage', 'patentsPage']});
+Meteor.Router.filter('requireLogin', {except: ['loginPage', 'decksPage', 'patentsPage', 'profilePage']});
 Meteor.Router.filter('forwardUser', {only: ['loginPage']});
-Meteor.Router.filter('verfiyUser', {only: ['decksPage', 'patentsPage']});
+Meteor.Router.filter('verfiyUser', {only: ['profilePage', 'decksPage', 'patentsPage']});
 Meteor.Router.filter('verfiyDeck', {only: ['patentsPage']});
 
 

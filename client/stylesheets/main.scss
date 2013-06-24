@@ -1,11 +1,10 @@
 
 ///////////////////////////////////////////////
 
-
+@import "mixins";
 @import "colors";
 @import "typography";
 @import "global";
-
 
 ///////////////////////////////////////////////
 
@@ -124,7 +123,7 @@
 	z-index: 2000;
 }
 
-#search-button, #add-button, #cancel-button {
+#search-button, #add-button, #cancel-button, #logout-button {
 	cursor: pointer;
 	background-color: $patdex-green;
 }
@@ -162,6 +161,12 @@
 		padding-top: 0.5em;
 		height: 3.5em;
 		line-height: 3.25em;
+	}
+
+	&.profile {
+		position: fixed;
+		top: 0;
+		width: 100%
 	}
 
 }
@@ -279,7 +284,7 @@
 }
 
 .deck {
-	// the box shadow property doesn't seem to work sass variables in this case
+	// the box shadow property doesn't seem to work with variables in this case
 	box-shadow: inset 0px 5px 0px 0px #D6D6D6, inset 0px 10px 0px 0px #EAEAEA, 0px 5px 0px 0px rgba(0,0,0,0.15);
 
 	.time {
@@ -424,6 +429,36 @@
 
 ///////////////////////////////////////////////
 
+.profile {
+	text-align: center;
+	.membership {
+		margin-top: -0.5em;
+		color: $patdex-shadow;
+	}
+	input {
+		&:disabled {
+			opacity: 1;
+			color: $patdex-green;
+			background-color: $patdex-shadow;
+		}
+	}
+}
+
+.profile-image {
+	@include rounded(300px);
+	margin-top: -2em;
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	background: url("/user-profile.svg") no-repeat;
+	margin-bottom: 1.5em;
+	img {
+		opacity: 0;
+	}
+}
+
+///////////////////////////////////////////////
+
 
 #status-message {
 	text-align: center;
@@ -431,7 +466,7 @@
 }
 
 #content-slider {
-	width: 100%
+	width: 100%;
 }
 
 .royalSlider {

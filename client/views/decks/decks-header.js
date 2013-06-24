@@ -2,10 +2,15 @@
 
 Template.decksHeader.events({
 
-    'click #logout, tap #logout' : function(e) {
+    'click #profile, tap #profile' : function(e) {
     	if(ignoreClick(e)) return;
-    	Meteor.logout();
-    	Meteor.Router.to("/");
+    	Meteor.Router.to("profile", Session.get('currentUser'));
+    },
+
+    'click #logout, tap #logout': function(e) {
+      if(ignoreClick(e)) return;
+      Meteor.logout();
+      Meteor.Router.to("home");
     },
 
     'click #new-deck, tap #new-deck' : function(e) {
@@ -36,7 +41,12 @@ Template.decksHeader.helpers({
   },
 
   deckHeader: function() {
-    return Session.get('currentUser');
+    var username = Session.get('currentUser');
+    var shortName = username.substring(0, 14);
+    if(shortName.length == 14) {
+      return shortName += "...";
+    }
+    return shortName;
   }
   
 });

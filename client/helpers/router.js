@@ -73,8 +73,8 @@ Meteor.Router.filters({
       }
     } else { 
       // marketing page
-      //return 'genericLanding';
-      return 'loginPage';
+      return 'genericLanding';
+      //return 'loginPage';
     }
   },
 

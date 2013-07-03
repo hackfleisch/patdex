@@ -17,7 +17,7 @@ Template.deckItem.events({
     if(ignoreClick(e)) return;
     var deck = Decks.findOne(this._id);
     Session.set('currentDeck', deck);
-    Meteor.Router.to("deck", Session.get('currentUser'), this._id);
+    Meteor.Router.to("deck", Session.get('requestedUser'), this._id);
   },
 
   'click #addto-deck, tap #addto-deck' : function(e) {
@@ -42,7 +42,7 @@ Template.deckItem.events({
       Session.set('currentPatent', undefined);
 
       Session.set('currentDeck', deck);
-      Meteor.Router.to("deck", Session.get('currentUser'), this._id);
+      Meteor.Router.to("deck", Session.get('requestedUser'), this._id);
     } else {
       alert("The chosen deck already contains this patent!");
     }
@@ -61,9 +61,12 @@ Template.deckItem.helpers({
 		return moment(this.lastUpdated).fromNow();
 	},
 
-	userLoggedIn : function(e) {
-		return Meteor.user();
-	},
+  userLoggedIn : function(e) {
+    if(Session.get('requestedUser') === Session.get('currentUser')) {
+      return true;
+    }
+    return false;
+  },
 
   addPatent: function(e) {
     return Session.get('addPatent');

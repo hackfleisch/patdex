@@ -63,7 +63,7 @@ createNewDeck = function(e) {
 				Session.set('deckInputStatus', false);
 				Session.set('addPatent', false);
   			Session.set('currentPatent', undefined);
-				Meteor.Router.to("deck", Session.get('currentUser'), deck._id);
+				Meteor.Router.to("deck", Session.get('requestedUser'), deck._id);
 
 			} else {
 

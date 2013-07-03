@@ -13,17 +13,20 @@ Template.userProfile.events({
 Template.userProfile.helpers({
 
 	userLoggedIn : function(e) {
-		return Meteor.user();
+    if(Session.get('requestedUser') === Session.get('currentUser')) {
+      return true;
+    }
+		return false;
 	},
 
 	deckAmount: function(e) {
-    var decks = Decks.find({username: Session.get('currentUser')}).fetch();
+    var decks = Decks.find({username: Session.get('requestedUser')}).fetch();
     return decks.length;
   },
 
   patentAmount: function(e) {
     var patents = 0;
-    var decks = Decks.find({username: Session.get('currentUser')}).fetch();
+    var decks = Decks.find({username: Session.get('requestedUser')}).fetch();
     for(i=0; i<decks.length; i++) {
       patents += decks[i].patents.length;
     }
@@ -31,15 +34,17 @@ Template.userProfile.helpers({
   },
 
   memberSince: function(e) {
-    if(Session.get('currentUser') !== undefined) {
-      var currentUser = Meteor.users.findOne({username: Session.get('currentUser')});
-      var memberSince = moment(currentUser.createdAt).format();
-      return moment(memberSince).fromNow();
+    if(Session.get('requestedUser') !== undefined) {
+      var requestedUser = Meteor.users.findOne({username: Session.get('requestedUser')});
+      if(requestedUser !== undefined) {
+        var memberSince = moment(requestedUser.createdAt).format();
+        return moment(memberSince).fromNow();
+      }
     }
   },
 
   username: function(e) {
-  	return Session.get('currentUser');
+  	return Session.get('requestedUser');
   }
 
 });

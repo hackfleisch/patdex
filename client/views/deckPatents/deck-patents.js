@@ -39,7 +39,10 @@ Template.deckPatents.helpers({
   },
 
   userLoggedIn : function(e) {
-    return Meteor.user();
+    if(Session.get('requestedUser') === Session.get('currentUser')) {
+      return true;
+    }
+    return false;
   }
 
 

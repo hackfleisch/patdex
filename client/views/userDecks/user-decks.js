@@ -21,16 +21,19 @@ Template.userDecks.helpers({
 	},
 
 	decks : function(e) {
-		return Decks.find({username: Session.get('currentUser')},{sort: {lastUpdated: -1}});
+		return Decks.find({username: Session.get('requestedUser')},{sort: {lastUpdated: -1}});
 	},
 
 	checkUserDecks : function(e) {
-		if(Decks.findOne({username: Session.get('currentUser')})) return true;
+		if(Decks.findOne({username: Session.get('requestedUser')})) return true;
     return false;
 	},
 
 	userLoggedIn : function(e) {
-		return Meteor.user();
+    if(Session.get('requestedUser') === Session.get('currentUser')) {
+      return true;
+    }
+		return false;
 	}
 
 });

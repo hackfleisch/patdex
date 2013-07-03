@@ -10,7 +10,7 @@ Template.deckPatentsHeader.events({
 
   'click #goto-decks, tap #goto-decks' : function(e) {
   	if(ignoreClick(e)) return;
-  	Meteor.Router.to("decks", Session.get('currentUser'));
+  	Meteor.Router.to("decks", Session.get('requestedUser'));
   }
 
 });

@@ -75,33 +75,71 @@ Meteor.Router.filters({
     if (Meteor.loggingIn()) {
       return 'loadingPage';
     } else if (Meteor.user()) {
-      Meteor.Router.to("decks", Meteor.user());
+      Meteor.Router.to("decks", Meteor.user().username);
       return 'userDecks';
     } else {
       return page;
     }
   },
 
-  'verfiyUser': function(page) {
-    if (Meteor.user()) {
-      Session.set('currentUser', Meteor.user().username);
-      return page;
+  'verifyUser': function(page) {
+
+    // determine who is logged in as opposed to what they are requesting
+
+    if (Meteor.loggingIn()) {
+
+      // return loading page while logging in user (if required)
+
+      return 'loadingPage';
+
     } else {
+
+      // if the user is already logged in then setup the current user 
+
+      if(Meteor.user()){
+        Session.set('currentUser', Meteor.user().username);
+      }
+
+      // grab the URL
+
       var path = window.location.pathname;
+
+      // trim the URL down the the username (first part of the path)
+
       path = path.substr(1, path.length);
-      var currentUser = path.substr(0, path.indexOf('/')); 
-      if(Meteor.users.findOne({username: currentUser})) {
-        Session.set('currentUser', currentUser);
-        return page; 
+      var requestedUser = path.substr(0, path.indexOf('/')); 
+
+      // set the requested user from the URL
+
+      if(requestedUser === "" || requestedUser === "search") {
+        // if the URL turns up blank it means the user is logging in or coming from the search page
+        Session.set('requestedUser', Meteor.user().username);
       } else {
+        Session.set('requestedUser', requestedUser);
+      }
+
+      // check and see if the requested user exists
+
+      if(Meteor.users.findOne({username: Session.get('requestedUser')})) {
+
+        return page;
+
+      } else {
+
+        // if they don't then show not found
+
         return '404Page';
       }
-    }  
+
+    }
+
   },
 
-  'verfiyDeck': function(page) {
-    if(Session.get('currentDeck') !== undefined) {
-      if(Decks.findOne({username: Session.get('currentUser'), _id: Session.get('currentDeck')._id}) !== undefined) {
+  'verifyDeck': function(page) {
+    if(Session.get('currentDeck') === undefined) {
+      return '404Page';
+    } else {
+      if(Decks.findOne({username: Session.get('requestedUser'), _id: Session.get('currentDeck')._id}) !== undefined) {
         return page;
       } else {
         return '404Page';
@@ -114,5 +152,5 @@ Meteor.Router.filters({
 Meteor.Router.filter('requireLogin', {only: 'searchPage'});
 Meteor.Router.filter('detectDevice', {only: 'landingPage'});
 Meteor.Router.filter('forwardUser', {only: ['landingPage']});
-Meteor.Router.filter('verfiyUser', {only: ['userDecks', 'userProfile', 'deckPatents']});
-Meteor.Router.filter('verfiyDeck', {only: ['deckPatents']});
+Meteor.Router.filter('verifyUser', {only: ['userDecks', 'userProfile', 'deckPatents']});
+Meteor.Router.filter('verifyDeck', {only: ['deckPatents']});

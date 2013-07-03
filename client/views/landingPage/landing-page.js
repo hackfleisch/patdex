@@ -89,7 +89,8 @@ submitLogin = function(e) {
           $('#status-message').text("Are you sure you're " + usernameInput + "?");
 		      $('#login-password-input').addClass("error");
         } else {
-          Meteor.Router.to("decks", Meteor.user());
+          Session.set('currentUser', Meteor.user().username);
+          Meteor.Router.to("decks", Meteor.user().username);
         }
       });
 
@@ -99,7 +100,8 @@ submitLogin = function(e) {
         if (error) {
           // the username already taken error is impossible (see keyup event on #username-field)
         } else {
-          Meteor.Router.to("decks", Meteor.user());
+          Session.set('currentUser', Meteor.user().username);
+          Meteor.Router.to("decks", Meteor.user().username);
         }
       });
 

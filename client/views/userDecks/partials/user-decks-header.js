@@ -14,7 +14,7 @@ Template.userDecksHeader.events({
  
  	'click #goto-profile, tap #goto-profile' : function(e) {
  		if(ignoreClick(e)) return;
- 		Meteor.Router.to("profile", Session.get('currentUser'));
+ 		Meteor.Router.to("profile", Session.get('requestedUser'));
 	},
 
  	'click #logout, tap #logout' : function(e) {
@@ -36,11 +36,14 @@ Template.userDecksHeader.helpers({
 	headerText : function(e) {
   	var deckInputStatus = Session.get("deckInputStatus");
   	if(deckInputStatus) return "New Deck";
-  	return Session.get('currentUser');
+  	return Session.get('requestedUser');
 	},
 
 	userLoggedIn : function(e) {
-		return Meteor.user();
+    if(Session.get('requestedUser') === Session.get('currentUser')) {
+      return true;
+    }
+		return false;
 	}
 
 });

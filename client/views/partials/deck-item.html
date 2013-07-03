@@ -1,0 +1,16 @@
+
+ <template name="deckItem">
+
+	<div class="deck">
+		{{#if addPatent}}
+			<div class="deck-header"><div id="addto-deck" class="deck-label">{{name}}</div><div class="deck-counter">{{patentCount}}</div></div>
+			<div class="deck-description">{{description}}</div>
+			<div class="deck-footer"><div class="deck-timestamp">{{lastUpdatedFromNow}}</div>
+		{{else}}
+			<div class="deck-header"><div id="goto-deck" class="deck-label">{{name}}</div><div class="deck-counter">{{patentCount}}</div></div>
+			<div class="deck-description">{{description}}</div>
+			<div class="deck-footer"><div class="deck-timestamp">{{lastUpdatedFromNow}}</div>{{#if userLoggedIn}}<div class="deck-delete ss-icon">Trash</div>{{/if}}</div>
+		{{/if}}
+	</div>
+
+</template>

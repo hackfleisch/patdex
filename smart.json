@@ -5,8 +5,8 @@
   },
   "packages": {
     "router": {},
+    "scss": {},
     "moment": {},
-    "cheeriowrap": {},
-    "scss": {}
+    "cheeriowrap": {}
   }
 }

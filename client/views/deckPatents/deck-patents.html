@@ -1,0 +1,39 @@
+
+<template name="deckPatents">
+
+ 	<div class="header">
+ 		{{> deckPatentsHeader}}
+ 	</div>
+
+ 	<div class="content deck-contents">
+ 		<div class="container">
+ 				<div class="align top">	
+
+					{{#if checkDeckPatents}}
+							<div class="royalSliderWrap">
+								<div class="royalSlider rsDefault">
+						    {{#each patents}}
+						      {{> patentItem}}
+						    {{/each}}
+						  	</div>
+						 </div>
+				  {{else}}
+				  	<p class="notification">This deck doesn't have any patents yet!</p>
+				  {{/if}}
+
+ 			</div>
+ 		</div>
+ 	</div>
+
+ 	{{#if checkDeckPatents}}
+	{{else}}
+
+		{{#if userLoggedIn}}
+		 	<div class="footer">
+		 		<div id="goto-search" class="big-button"><span class="ss-icon">Search</span></div>
+		 	</div>
+		{{/if}}
+
+	{{/if}}
+
+</template>

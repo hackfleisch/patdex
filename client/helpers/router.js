@@ -4,7 +4,7 @@ Meteor.Router.add({
 
   '/': { 
     as: 'home',
-    to: 'loginPage'
+    to: 'landingPage'
   },
 
   '/search/' : {
@@ -12,28 +12,19 @@ Meteor.Router.add({
     to: 'searchPage'
   },
 
-  '/search/add/:patentNumber' : {
-    as: 'add',
-    to: 'addPage',
-    and: function(patentNumber) {
-      var currentPatent = Patents.findOne({number: patentNumber});
-      Session.set('currentPatent', currentPatent);
-    }
-  },
-
   '/:username/': { 
     as: 'profile',
-    to: 'profilePage'
+    to: 'userProfile'
   }, 
-  
+
   '/:username/decks/': { 
     as: 'decks',
-    to: 'decksPage'
+    to: 'userDecks'
   },
 
   '/:username/decks/:id' : { 
-    as: 'patents',
-    to: 'patentsPage',
+    as: 'deck',
+    to: 'deckPatents',
     and: function(username, id) {
       var deck = Decks.findOne({_id: id});
       if(deck !== undefined) { 
@@ -42,7 +33,7 @@ Meteor.Router.add({
     }
   },
 
-  '/*': '404' // not a true 404 HTTP response
+  '/*': '404Page' // not a true 404 HTTP response
 
 });
 
@@ -51,30 +42,31 @@ Meteor.Router.filters({
   'requireLogin': function(page) {
     if (Meteor.user())
       return page;
-		else if (Meteor.loggingIn())
+    else if (Meteor.loggingIn())
       return 'loadingPage';
     else
-      return '404';
+      return '404Page';
   }, 
 
   'detectDevice': function() {
 
     // detect device
-    //var isiDevice = /ipad|iphone|ipod/i.test(navigator.userAgent.toLowerCase());
-    var isiDevice = /iphone|ipod/i.test(navigator.userAgent.toLowerCase());
+    var isiDevice = /ipad|iphone|ipod/i.test(navigator.userAgent.toLowerCase());
 
     if (isiDevice) {
       if (navigator.standalone == true) {
-        // iOS login page
-        return 'loginPage';
+        // iOS pinned app - hide 'pin to homescreen drawer'
+        Session.set('showDrawer', false);
+        return 'landingPage';
       } else {
-        // iOS add to homepage message
-        return 'idevicePage';
+        // iOS safari - slide up 'pin to homescreen drawer'
+				Session.set('showDrawer', true);
+        return 'landingPage';
       }
     } else { 
-      // marketing page
-      return 'genericLanding';
-      //return 'loginPage';
+      // Anything else - hide 'pin to homescreen drawer'
+      Session.set('showDrawer', false);
+      return 'landingPage';
     }
   },
 
@@ -84,7 +76,7 @@ Meteor.Router.filters({
       return 'loadingPage';
     } else if (Meteor.user()) {
       Meteor.Router.to("decks", Meteor.user());
-      return 'decksPage';
+      return 'userDecks';
     } else {
       return page;
     }
@@ -102,26 +94,25 @@ Meteor.Router.filters({
         Session.set('currentUser', currentUser);
         return page; 
       } else {
-        return '404';
+        return '404Page';
       }
     }  
   },
 
   'verfiyDeck': function(page) {
-    if(Decks.findOne({username: Session.get('currentUser'), name: Session.get('currentDeck').name}) !== undefined) {
-      return page;
-    } else {
-      return '404';
+    if(Session.get('currentDeck') !== undefined) {
+      if(Decks.findOne({username: Session.get('currentUser'), _id: Session.get('currentDeck')._id}) !== undefined) {
+        return page;
+      } else {
+        return '404Page';
+      }
     }
   }
 
 });
 
-Meteor.Router.filter('detectDevice', {only: 'loginPage'});
-Meteor.Router.filter('requireLogin', {except: ['loginPage', 'decksPage', 'patentsPage', 'profilePage', 'genericLanding', 'idevicePage']});
-Meteor.Router.filter('forwardUser', {only: ['loginPage']});
-Meteor.Router.filter('verfiyUser', {only: ['profilePage', 'decksPage', 'patentsPage']});
-Meteor.Router.filter('verfiyDeck', {only: ['patentsPage']});
-
-
-
+Meteor.Router.filter('requireLogin', {only: 'searchPage'});
+Meteor.Router.filter('detectDevice', {only: 'landingPage'});
+Meteor.Router.filter('forwardUser', {only: ['landingPage']});
+Meteor.Router.filter('verfiyUser', {only: ['userDecks', 'userProfile', 'deckPatents']});
+Meteor.Router.filter('verfiyDeck', {only: ['deckPatents']});

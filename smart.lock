@@ -2,20 +2,25 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "master",
-    "commit": "5d736d4bf0448c7db1f9b47124dfafc34a9631bb"
+    "commit": "9bb2b5447e845c4f483df5e9b42a2c1de5ab909b"
   },
   "dependencies": {
     "basePackages": {
       "router": {},
+      "scss": {},
       "moment": {},
-      "cheeriowrap": {},
-      "scss": {}
+      "cheeriowrap": {}
     },
     "packages": {
       "router": {
         "git": "https://github.com/tmeasday/meteor-router.git",
         "tag": "v0.5.1",
         "commit": "32e377c7703bb119acccc859fc7296882903cbe7"
+      },
+      "scss": {
+        "git": "https://github.com/fourseven/meteor-scss.git",
+        "tag": "v0.5.1.1",
+        "commit": "6b142df6fc11f026e4bff1d6828055b3d84ce608"
       },
       "moment": {
         "git": "https://github.com/possibilities/meteor-moment.git",
@@ -26,11 +31,6 @@
         "git": "https://github.com/Chillmatica/meteor-cheeriowrap.git",
         "tag": "v0.1.0",
         "commit": "9227b876729606d7d0e5d37ffe21918c27b16868"
-      },
-      "scss": {
-        "git": "https://github.com/fourseven/meteor-scss.git",
-        "tag": "v0.2.3",
-        "commit": "d500ec82a77680be3c1e0640e48842d9e66c0102"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",

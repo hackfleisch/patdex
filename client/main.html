@@ -1,6 +1,9 @@
 
 <head>
-	<title>PatDex</title>
+	<title> PatDex </title>
+
+	<meta name="description" content="Portable Patents" />
+	<meta property="og:image" content="/apple-touch-icon-114x114.png"/> 
 
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 
@@ -25,7 +28,16 @@
 </head>
 
 <body>
+	<div class="beta-banner-wrapper">
+		<span class="beta-banner">Beta</span>
+	</div>
 	<div class="page">
-			{{renderPage}}
+		{{renderPage}}
+	</div>
+	<div class="drawer s-hidden">
+		<img src="/drawer-icon.svg"/>
+		<div class="drawer-text">
+			Tap the share icon to<br> add this app to your <br>iOS homescreen.
+		</div>
 	</div>
 </body>

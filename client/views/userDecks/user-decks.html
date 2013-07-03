@@ -1,0 +1,45 @@
+<template name="userDecks">
+
+ 	<div class="header">
+ 		{{> userDecksHeader}}
+ 	</div>
+
+ 	<div class="content">
+ 		<div class="container">
+ 				<div class="align top">
+
+ 				{{#if newDeckInputActive}}
+ 					{{> newDeckInput}}
+ 				{{/if}}			
+
+				{{#if checkUserDecks}}
+
+		 				{{#each decks}}
+		 					{{> deckItem}}
+		 				{{/each}}
+
+		 			{{else}}
+
+		 				{{#if userLoggedIn}}
+
+		 					{{#if newDeckInputActive}}
+		 					{{else}}
+								<p class="notification">Create your first deck, or <br> try searching for some patents!</p>
+							{{/if}}
+						{{else}}
+							<p class="notification">This user doesn't have any decks yet!</p>
+						{{/if}}
+
+				{{/if}}
+
+ 			</div>
+ 		</div>
+ 	</div>
+
+ 	{{#if userLoggedIn}}
+	 	<div class="footer">
+	 		<div id="goto-search" class="big-button"><span class="ss-icon">Search</span></div>
+	 	</div>
+	{{/if}}
+
+</template>

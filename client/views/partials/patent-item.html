@@ -1,0 +1,67 @@
+
+<template name="patentItem">
+
+	<div class="patent">
+
+		<div class="patent-header">
+			{{title}} <span class="patent-number">{{number}}</span>
+		</div>
+
+		<div class="patent-biblio">
+			<table>
+				{{#if publication}}
+					<tr>
+						<td class="key">Publication Date</td>
+						<td>{{publication}}</td>
+					</tr>
+				{{/if}}
+				{{#if priority}}
+					<tr>
+						<td class="key">Priority Date</td>
+						<td>{{priority}}</td>
+					</tr>
+				{{/if}}
+				{{#if inventors}}
+					<tr>
+						<td class="key">Inventor(s)</td>
+						<td>
+							{{#each inventors}}
+								<p>{{this}}</p>
+							{{/each}}
+						</td>
+					</tr>
+				{{/if}}		
+				{{#if applicants}}
+					<tr>
+						<td class="key">Applicants(s)</td>
+						<td>
+							{{#each applicants}}
+								<p>{{this}}</p>
+							{{/each}}
+						</td>
+					</tr>
+				{{/if}}	
+				{{#if classifications}}
+					<tr>
+						<td class="key">Classification(s)</td>
+						<td>
+							{{#each classifications}}
+								<p>{{this}}</p>
+							{{/each}}
+						</td>
+					</tr>
+				{{/if}}							
+			</table>
+		</div>
+
+		<div class="patent-body">
+			{{abstract}}
+		</div>
+
+		<div class="patent-footer">
+			Source: {{source}}
+		</div>
+
+  </div>
+
+</template>

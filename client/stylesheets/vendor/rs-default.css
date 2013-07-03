@@ -18,19 +18,6 @@
 ******************************/
 
 
-/* Background */
-.rsDefault,
-.rsDefault .rsOverflow,
-.rsDefault .rsSlide,
-.rsDefault .rsVideoFrameHolder,
-.rsDefault .rsThumbs {
-}
-
-.rsOverflow {
-	margin-top: -1em;
-	height: 445px;
-}
-
 
 /***************
 *
@@ -87,27 +74,32 @@
 
 .rsDefault .rsArrowDisabled .rsArrowIcn { opacity: .2; filter: alpha(opacity=20);  *display: none; }
 
+
 /***************
 *
 *  2. Bullets
 *
 ****************/
 
-.rsDefault .rsBullets {
+.royalSliderWrap {
 	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.rsDefault .rsBullets {
+	position: fixed;
 	z-index: 35;
 	left: 0;
-	bottom: 0;
+	bottom: 15px;
 	width: 100%;
-	height: 1em;
+	height: 20px;
 	margin: 0 auto; 
 
 	text-align: center;
 	line-height: 8px;
 	overflow: hidden;
 }
-
-
 .rsDefault .rsBullet {
 	width: 8px;
 	height: 8px;

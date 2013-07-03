@@ -1,4 +1,5 @@
 
+
 if (Decks.find().count() === 0) {
   Decks.insert({
   	createdAt: '2013-05-07T16:17:13+02:00',

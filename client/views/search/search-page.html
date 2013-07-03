@@ -1,59 +1,60 @@
 
 <template name="searchPage">
 
-	{{#if pdfVisible}}
-		{{> pdfViewer}}
-	{{/if}}
-
-	<div class="container felt image">
-		
-		<div class="header search">
+	<div class="header">
+		{{#if addPatent}}
+			{{> addPatentHeader}}
+		{{else}}
 			{{> searchHeader}}
-		</div>
-
-		<div class="content patents search">
-			{{#if resultCheck}}
-				<div id="content-slider" class="royalSlider rsDefault search-results">
-			    {{#each results}}
-			      {{> patentItem}}
-			    {{/each}}
-			  </div>
-		  {{else}}
-
-		  	{{#if loadingCheck}}
-
-				{{else}}
-			  	<div class="no-patents">
-			  		<p id="status-message">Search for anything!<br>"Transformable lunchbox robot"</p>
-			  	</div>
-				{{/if}}
-
-		  {{/if}}
-	  </div>
-
+		{{/if}}
 	</div>
 
+	<div class="content search">
+	 		<div class="container">
+	 				<div class="align top">	
+	 					{{#if addPatent}}
+	 						{{> newDeckInput}}
 
-	{{#if resultCheck}}
-		<div class="button-holder">
-			<div id="add-button" class="big-button">
-				<div class="ss-icon">Plus</div>
-			</div>
-		</div>
+							{{#if checkUserDecks}}
+
+				 				{{#each decks}}
+				 					{{> deckItem}}
+				 				{{/each}}
+
+				 			{{else}}
+				 				<p class="notification">Create a deck to add your patent too!</p>
+				 			{{/if}}
+
+	 					{{else}}
+			 				{{#if searchResults}}
+									<div class="royalSliderWrap">
+										<div class="royalSlider rsDefault">
+									    {{#each results}}
+									      {{> patentItem}}
+									    {{/each}}
+								  	</div>
+								 </div>
+			 					{{else}}
+			 						{{#if loadingCheck}}
+			 							<img src="/loading-spinner.gif"/>
+			 						{{else}}
+			 							<p class="notification">Try searching for:<br>Transformable Lunchbox Robot?</p>
+			 						{{/if}}
+			 				{{/if}}
+			 			{{/if}}
+	 				</div>
+	 		</div>
+	</div>
+
+	{{#if addPatent}}
 	{{else}}
-		{{#if loadingCheck}}
-		<div class="button-holder">
-			<div id="search-button" class="big-button">
-				<img src="/felt-spinner.gif"/>
-			</div>
-		</div>		
-		{{else}}
-		<div class="button-holder">
-			<div id="search-button" class="big-button">
-				<div class="ss-icon">Search</div>
-			</div>
+		<div class="footer">
+			{{#if searchResults}}
+			 	<div id="add-patent" class="big-button"><span class="ss-icon">Plus</span></div>
+			{{else}}
+			 	<div id="submit-search" class="big-button"><span class="ss-icon">Search</span></div>
+			{{/if}}
 		</div>
-		{{/if}}
 	{{/if}}
-
+		
 </template>

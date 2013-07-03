@@ -1,0 +1,12 @@
+
+<template name="userDecksHeader">
+
+ 		{{#if userLoggedIn}}
+ 			<div id="new-deck" class="header-left ss-icon">{{headerAction}}</div>
+ 		{{else}}
+ 			<div id="logout" class="header-left"><img src="/home-icon.svg"/></div>
+ 		{{/if}}
+ 		<div id="goto-profile" class="header-right ss-icon">User</div>
+ 		<div class="header-middle">{{headerText}}</div>
+
+</template>

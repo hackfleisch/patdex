@@ -1,0 +1,33 @@
+
+<template name="userProfile">
+
+ 	<div class="header">
+ 		{{> userProfileHeader}}
+ 	</div>
+
+ 	<div class="content no-header">
+ 		<div class="container">
+ 				<div class="align middle">
+
+					<div class="profile-image">
+						<img src="/user-profile.svg" alt="" />
+					</div>
+
+					<br>
+
+					{{#if userLoggedIn}}
+						<form id="login-form">
+							<input type="username" id="login-username-input" placeholder="" value="{{username}}" disabled/><br>
+							<input type="password" id="login-password-input" placeholder="" value="password" disabled/><br>
+							<input type="submit" class="submit-button"/>
+	 					</form>
+					{{/if}}
+
+					<p class="notification">Decks: {{deckAmount}} (Patents: {{patentAmount}})</p>
+					<p class="membership">{{memberSince}}</p>
+
+ 			</div>
+ 		</div>
+ 	</div>
+
+</template>

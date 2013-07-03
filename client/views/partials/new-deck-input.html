@@ -1,0 +1,16 @@
+
+<template name="newDeckInput">
+
+	<div class="deck new-deck animated fadeInDown">
+		<form id="create-new-deck">
+			<textarea class="deck-label-input" placeholder="New Deck Title..." rows="1" cols="1"></textarea><div class="submit-deck ss-icon s-active">Check</div><br>
+			<textarea class="deck-description-input" placeholder="New Deck Description..." rows="1" cols="1"></textarea>
+			{{#if addPatent}}
+			{{else}}
+				<div class="cancel-deck ss-icon">delete</div><br>
+			{{/if}}
+			<input type="submit" class="submit-button"/>
+		</form>
+	</div>
+
+</template>

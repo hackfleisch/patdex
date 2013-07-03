@@ -1,17 +1,50 @@
 # Patdex
 
-Portable Patents.
+__Portable Patents - Version 0.2__
 
-My first Meteor.js project. Developed while working for Moving Targets Consulting in Berlin, Germany.
+A responsive frontend for Google Patents built with Meteor.js allowing you to search, organise and share patent information. 
 
-A work in progress. I guess it's like version 0.01 or something. I'm a designer, not a developer (it probably shows) teaching myself the ways of Javascript and Meteor. This project is abit of a mess and I don't apolgise for that :) 
+http://www.patdex.meteor.com.
 
-PatDex is a web app limited to iPhone/iPod Touch at the moment. 
-The layout is optimised for iPhone 5 only currently.
+Since this is kind of a beta I take no responsbility for your data and it may be deleted at any time. Most likely because I don't know what I'm doing rather than anything sinister. Sorry folks.
 
-Visit http://www.patdex.meteor.com and pin the app to your homescreen to test it out.
+__Note:__This is a work in progress and my first Meteor.js project (developed while working for Moving Targets Consulting in Berlin, Germany). I'm a designer, not a developer (it probably shows) teaching myself the ways of Javascript and Meteor. This project is abit of a mess and I don't apolgise for that :)
 
 # Links
+
+## Base Meteor packages (requried)
+
+`meteor add accounts-base`
+`meteor add accounts-password`
+`meteor add http`
+`meteor remove autopublish`
+
+## Meteorite Packages (requried)
+
+__Meteorite__
+Installer & smart package manager for Meteor.
+`npm install -g meteorite`
+https://github.com/oortcloud/meteorite
+
+__Router__
+A Reactive Router for multipage apps.
+`mrt add router`
+https://atmosphere.meteor.com/package/router
+
+__Sass__
+Syntactically Awesome Stylesheets.
+`mrt add scss`
+https://atmosphere.meteor.com/package/scss
+
+__Cheerio__
+Fast, flexible, and lean implementation of core jQuery designed specifically for the server.
+`mrt add cheeriowrap`
+https://atmosphere.meteor.com/package/cheeriowrap
+
+__Moment__
+Parse, validate, manipulate, and display dates in javascript.
+`mrt add momentjs`
+https://atmosphere.meteor.com/package/momentjs
 
 ## Resources
 

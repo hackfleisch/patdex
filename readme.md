@@ -4,7 +4,7 @@ __Portable Patents - Version 0.2__
 
 A responsive frontend for Google Patents built with Meteor.js allowing you to search, organise and share patent information. 
 
-http://www.patdex.meteor.com.
+http://www.patdex.meteor.com
 
 Since this is kind of a beta I take no responsbility for your data and it may be deleted at any time. Most likely because I don't know what I'm doing rather than anything sinister. Sorry folks.
 
@@ -12,39 +12,44 @@ __Note:__This is a work in progress and my first Meteor.js project (developed wh
 
 # Links
 
-## Base Meteor packages (requried)
+## Base Meteor packages (required)
 
-`meteor add accounts-base`
-`meteor add accounts-password`
-`meteor add http`
+`meteor add accounts-base`  
+`meteor add accounts-password`  
+`meteor add http`  
 `meteor remove autopublish`
 
-## Meteorite Packages (requried)
+## Meteorite Packages (required)
 
 __Meteorite__
-Installer & smart package manager for Meteor.
-`npm install -g meteorite`
+Installer & smart package manager for Meteor.  
 https://github.com/oortcloud/meteorite
 
+`npm install -g meteorite`
+
 __Router__
-A Reactive Router for multipage apps.
-`mrt add router`
+A Reactive Router for multipage apps.  
 https://atmosphere.meteor.com/package/router
 
+`mrt add router`
+
 __Sass__
-Syntactically Awesome Stylesheets.
-`mrt add scss`
+Syntactically Awesome Stylesheets.  
 https://atmosphere.meteor.com/package/scss
 
+`mrt add scss`
+
 __Cheerio__
-Fast, flexible, and lean implementation of core jQuery designed specifically for the server.
-`mrt add cheeriowrap`
+Fast, flexible, and lean implementation of core jQuery designed specifically for the server.  
 https://atmosphere.meteor.com/package/cheeriowrap
 
+`mrt add cheeriowrap`
+
 __Moment__
-Parse, validate, manipulate, and display dates in javascript.
-`mrt add momentjs`
+Parse, validate, manipulate, and display dates in javascript.  
 https://atmosphere.meteor.com/package/momentjs
+
+`mrt add momentjs`
 
 ## Resources
 
@@ -52,7 +57,7 @@ http://www.discovermeteor.com
 
 More to come ...
 
-## Other
+## Personal
 
 http://www.twitter.com/brentriddell
 

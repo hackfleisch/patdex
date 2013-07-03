@@ -23,33 +23,28 @@ __Note:__This is a work in progress and my first Meteor.js project (developed wh
 
 __Meteorite__
 Installer & smart package manager for Meteor.  
+`npm install -g meteorite`  
 https://github.com/oortcloud/meteorite
-
-`npm install -g meteorite`
 
 __Router__
 A Reactive Router for multipage apps.  
+`mrt add router`   
 https://atmosphere.meteor.com/package/router
-
-`mrt add router`
 
 __Sass__
 Syntactically Awesome Stylesheets.  
+`mrt add scss`  
 https://atmosphere.meteor.com/package/scss
-
-`mrt add scss`
 
 __Cheerio__
 Fast, flexible, and lean implementation of core jQuery designed specifically for the server.  
+`mrt add cheeriowrap`    
 https://atmosphere.meteor.com/package/cheeriowrap
-
-`mrt add cheeriowrap`
 
 __Moment__
 Parse, validate, manipulate, and display dates in javascript.  
+`mrt add momentjs`  
 https://atmosphere.meteor.com/package/momentjs
-
-`mrt add momentjs`
 
 ## Resources
 

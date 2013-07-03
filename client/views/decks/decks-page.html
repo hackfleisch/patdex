@@ -1,34 +1,37 @@
 
 <template name="decksPage">
 
-	<div class="container felt image">
-
 		<div class="header">
 			{{> decksHeader}}
 		</div>
 
-		{{#if inputActive}}
-			{{> deckInput}}
-		{{/if}}
+		<div class="middle">
+				<div class="container felt image">
+					<div class="align top">
 
-		<div class="content decks">
-			{{#if deckCheck}}
-		    {{#each decks}}
-		      {{> deckItem}}
-		    {{/each}}
-		  {{else}}
-		  	{{#if loggedIn}}
-			  	{{#if inputActive}}
-			  		
-			  	{{else}}
-			  		<h2 class="s-active">Hi {{currentUser.username}}!</h2>
-			  		<p id="status-message">Tap the plus to create <br>your first deck, or...</p>
-			  	{{/if}}
-			  {{/if}}
-		  {{/if}}
-	  </div>
+						{{#if inputActive}}
+							{{> deckInput}}
+						{{/if}}
 
-	</div>
+							{{#if deckCheck}}
+						    {{#each decks}}
+						      {{> deckItem}}
+						    {{/each}}
+						  {{else}}
+						  	{{#if loggedIn}}
+							  	{{#if inputActive}}
+							  		
+							  	{{else}}
+							  		<h2 class="s-active">Hi {{currentUser.username}}!</h2>
+							  		<p id="status-message">Tap the plus to create <br>your first deck, or...</p>
+							  	{{/if}}
+							  {{/if}}
+						  {{/if}}
+
+					 </div>
+				</div>
+		</div>
+
 	{{#if loggedIn}}
 		{{#if deckCheck}}
 			<div class="button-holder">

@@ -1,6 +1,11 @@
 
 Template.profilePage.events({
 
+  'click .profile-image, tap .profile-image' : function(e) {
+    if(ignoreClick(e)) return;
+    alert("Image upload coming soon...");
+  },
+
   'click #logout-button, tap #logout-button': function(e) {
     if(ignoreClick(e)) return;
     Meteor.logout();

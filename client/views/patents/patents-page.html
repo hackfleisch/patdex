@@ -5,25 +5,31 @@
 		{{> pdfViewer}}
 	{{/if}}
 
-	<div class="container felt image">
+
 		
 		<div class="header">
 			{{> patentsHeader}}
 		</div>
 
-		<div class="content patents">
-			{{#if patentCheck}}
-				<div id="content-slider" class="royalSlider rsDefault">
-			    {{#each patents}}
-			      {{> patentItem}}
-			    {{/each}}
-		  	</div>
-		  {{else}}
-		  	
-		  {{/if}}
-	  </div>
+		<div class="middle patent-view">
+			<div class="container felt image">
+					<div class="align top">
+						<div class="content patents">
+							{{#if patentCheck}}
+								<div id="content-slider" class="royalSlider rsDefault">
+							    {{#each patents}}
+							      {{> patentItem}}
+							    {{/each}}
+						  	</div>
+						  {{else}}
+						  	
+						  {{/if}}
+					  </div>
+				</div>
+			</div>
+		</div>
 
-	</div>
+
 
 	{{#if patentCheck}}
 

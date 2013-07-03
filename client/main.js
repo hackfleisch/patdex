@@ -1,5 +1,4 @@
 
-
 Meteor.subscribe('decks');
 
 Meteor.subscribe('users');

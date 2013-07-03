@@ -69,12 +69,13 @@ Meteor.Router.filters({
         return 'loginPage';
       } else {
         // iOS add to homepage message
-        return 'idevicePage';
+        //return 'idevicePage';
+        return 'loginPage'
       }
     } else { 
       // marketing page
-      return 'genericLanding';
-      //return 'loginPage';
+      // return 'genericLanding';
+      return 'loginPage';
     }
   },
 

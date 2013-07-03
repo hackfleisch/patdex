@@ -153,9 +153,17 @@ processPatent = function(patent, number, tag, callback) {
     }
 
     patentLink = "http://www.google.com/patents/" + number;
-    patentPDF = "patentimages.storage.googleapis.com/pdfs/" + number + ".pdf";
 
-    // popualte new patent object with data collected from the page
+    console.log(number.substr(0,1));
+
+    if(number.substr(0,2) === "US") {
+      patentPDF = "patentimages.storage.googleapis.com/pdfs/" + number + ".pdf";
+    } else {
+      patentPDF = "";
+    }
+    
+
+    // populate new patent object with data collected from the page
 
     newPatent = {
       number: patentNumber,

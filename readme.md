@@ -60,6 +60,10 @@ __Gizmo Icons by Symbolset__
 Symbolset uses font magic to change words into icons.  
 http://symbolset.com
 
+__Royal Slider__  
+A powerful image gallery and content slider plugin.  
+http://dimsemenov.com/plugins/royal-slider/
+
 More to come ...
 
 ## Personal

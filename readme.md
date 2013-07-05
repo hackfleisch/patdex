@@ -46,9 +46,19 @@ Parse, validate, manipulate, and display dates in javascript.
 `mrt add momentjs`  
 https://atmosphere.meteor.com/package/momentjs
 
-## Resources
+## Other Resources
 
+__Discover Meteor__  
+Learn Meteor and build faster & simpler web apps.  
 http://www.discovermeteor.com
+
+__Animate CSS__  
+Cool, fun, and cross-browser animations for you to use in your projects.  
+http://daneden.me/animate/
+
+__Gizmo Icons by Symbolset__  
+Symbolset uses font magic to change words into icons.  
+http://symbolset.com
 
 More to come ...
 

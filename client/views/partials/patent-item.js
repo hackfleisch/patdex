@@ -6,9 +6,15 @@ Template.patentItem.rendered = function(e) {
 
 Template.patentItem.events({
 
+  'click #delete-patent, tap #delete-patent' : function(e) {
+    if(ignoreClick(e)) return;
+    var deck = Session.get('currentDeck');
+    Decks.update({ _id: deck._id }, { $pull: { patents: this.number }});
+  },
+
   'click #view-PDF, tap #view-PDF' : function(e) {
     if(ignoreClick(e)) return;
-    alert("PDF!");
+    Session.set('pdf-to-view', this.PDF);
   }
 
 });

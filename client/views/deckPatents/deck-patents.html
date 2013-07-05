@@ -1,6 +1,10 @@
 
 <template name="deckPatents">
 
+	{{#if pdfVisible}}
+		{{> pdfViewer}}
+	{{/if}}
+
  	<div class="header">
  		{{> deckPatentsHeader}}
  	</div>

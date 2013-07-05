@@ -48,19 +48,19 @@ https://atmosphere.meteor.com/package/momentjs
 
 ## Other Resources
 
-__Discover Meteor__  
+__Discover Meteor__
 Learn Meteor and build faster & simpler web apps.  
 http://www.discovermeteor.com
 
-__Animate CSS__  
+__Animate CSS__
 Cool, fun, and cross-browser animations for you to use in your projects.  
 http://daneden.me/animate/
 
-__Gizmo Icons by Symbolset__  
+__Gizmo Icons by Symbolset__
 Symbolset uses font magic to change words into icons.  
 http://symbolset.com
 
-__Royal Slider__  
+__Royal Slider__
 A powerful image gallery and content slider plugin.  
 http://dimsemenov.com/plugins/royal-slider/
 

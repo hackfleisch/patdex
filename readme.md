@@ -4,7 +4,7 @@ __Portable Patents - Version 0.2__
 
 A responsive frontend for Google Patents built with Meteor.js allowing you to search, organise and share patent information. 
 
-http://www.patdex.meteor.com
+http://patdex.meteor.com
 
 Since this is kind of a beta I take no responsbility for your data and it may be deleted at any time. Most likely because I don't know what I'm doing rather than anything sinister. Sorry folks.
 

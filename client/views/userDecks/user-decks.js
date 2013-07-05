@@ -2,6 +2,8 @@
 Template.userDecks.rendered = function(e) {
 	$(".deck-label-input").autoResize({extraSpace:-4});
   $(".deck-description-input").autoResize({extraSpace:-5});
+
+  Session.set('viewDeck', false);
 };
 
 

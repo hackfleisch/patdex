@@ -5,8 +5,11 @@ Template.deckPatents.rendered = function(e) {
   patentsSlider = $('.royalSlider').royalSlider({
     arrowsNav: false,
     controlNavigation: 'bullets',
-    navigateByClick: false
+    navigateByClick: false,
+    fadeInLoadedSlide: false,
   }).data('royalSlider');
+
+  Session.set('viewDeck', true);
 
 };
 

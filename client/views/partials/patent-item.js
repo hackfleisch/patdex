@@ -8,13 +8,13 @@ Template.patentItem.events({
 
   'click #delete-patent, tap #delete-patent' : function(e) {
     if(ignoreClick(e)) return;
-    var deck = Session.get('currentDeck');
-    Decks.update({ _id: deck._id }, { $pull: { patents: this.number }});
-  },
-
-  'click #view-PDF, tap #view-PDF' : function(e) {
-    if(ignoreClick(e)) return;
-    Session.set('pdf-to-view', this.PDF);
+    var patentNumber = this.number;
+    $(".patent").addClass("fadeOutDown");
+    setTimeout(function(){
+      var deck = Session.get('currentDeck');
+      Decks.update({ _id: deck._id }, { $pull: { patents: patentNumber }}); 
+      $(".patent").removeClass("fadeOutDown");
+    }, 1000);  
   }
 
 });
@@ -26,7 +26,7 @@ Template.patentItem.helpers({
 	},
 
 	searchResults: function(e) {
-		return Session.get('resultStatus');
+		return Session.get('viewDeck');
 	},
 
   userLoggedIn : function(e) {

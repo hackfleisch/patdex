@@ -1,10 +1,14 @@
 
 <template name="patentItem">
 
-	<div class="patent">
+	<div class="patent animated fadeInRight">
 
 		<div class="patent-header">
-			{{#if pdfLink}} <span id="view-PDF" class="pdf-link ss-icon">PDF</span> {{/if}}
+			{{#if pdfLink}} 
+				<a href="http://{{pdfLink}}" target="_blank">
+					<span id="view-PDF" class="pdf-link ss-icon">PDF</span> 
+				</a>
+			{{/if}}
 			<div class="patent-title">{{title}} <span class="patent-number">{{number}}</span></div>
 		</div>
 
@@ -63,8 +67,9 @@
 			Source: {{source}}
 			{{#if userLoggedIn}}
 				{{#if searchResults}}
-				{{else}}
 					<span id="delete-patent" class="delete-patent ss-icon">Trash</span>
+				{{else}}
+					
 				{{/if}}
 			{{/if}}
 		</div>
